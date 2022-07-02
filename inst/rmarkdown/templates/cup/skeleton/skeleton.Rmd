@@ -8,43 +8,52 @@ author:
 date: "The Date"
 journal: psrm
 manuscript: article
-year: 2021
+year: 2022
 volume: 2
-doi: 10.1017/psrm.2021.48
+doi: 12.3456/1234.567
 bibliography: example.bib
 keywords: Research ethics; measurement; transparency; fieldwork; political violence
 abstract: |
-  There has been a proliferation of research with human participants in violent contexts over the past ten years. Adhering to commonly held ethical principles such as beneficence, justice, and respect for persons is particularly important and challenging in research on violence. This letter argues that practices around research ethics in violent contexts should be reported more transparently in research outputs, and should be seen as a subset of research methods. We offer practical suggestions and empirical evidence from both within and outside of political science around risk assessments, mitigating the risk of distress and negative psychological outcomes, informed consent, and monitoring the incidence of potential harms. An analysis of published research on violence involving human participants from 2008 to 2019 shows that only a small proportion of current publications include any mention of these important dimensions of research ethics.
+  Lorem ipsum dolor sit amet, amet pellentesque ridiculus at dolor conubia. Elit id neque et, pellentesque quis faucibus ut aenean. Neque libero et mauris ipsum ac, sed risus montes. Massa nullam donec et ac congue donec posuere fermentum in fames. At aliquam, dui sed orci, in id ut augue et a. Curabitur libero cursus sociosqu in velit, non donec conubia. Vitae risus, interdum et nascetur condimentum nec sit nullam. Urna turpis orci faucibus velit porta. Sed aliquam vel sem. Ridiculus maximus ac, vulputate, accumsan accumsan semper sed, nulla. Erat eu lacus ex auctor, in a faucibus. Varius nunc tristique duis. In eget fames odio cras sollicitudin in tristique tempus dictumst. Fames eu eu risus senectus dignissim felis lacinia.
 output: 
   rticles::cup_article:
     keep_tex: true
-header-includes:
-  - \usepackage{booktabs,microtype,siunitx}
-  - \sisetup{detect-all,separate-uncertainty = true}
+include-after:
+  - \include{appendix}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 ```
 
-# R Markdown
+# Journals
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Possible values for "journal" field in YAML Header:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+- default
+- aog: Annals of Glaciology
+- jog: Journal of Glaciology
+- bjps: British Journal of Political Science
+- jjps: currently doesn't work
+- pasa: doesn't work
+- psrm: Political Science and Research Methods
+- jpup: doesn't work (missing logo)
+
+\clearpage
+# Manuscript
+
+Possible values for "manuscript" field in YAML header:
+
+- article
+- communication
+- letter
+- note
+- review
+- suppinfo
 
 ```{r cars}
 summary(cars) |> knitr::kable()
 ```
-
-# Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure}
-plot(pressure)
-```
-
 
 # Citing stuff
 

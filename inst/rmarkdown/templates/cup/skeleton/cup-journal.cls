@@ -1267,13 +1267,13 @@
         {%
           \datesize
           \datefont
-          \ifcup@dates
-            Received \cup@recvd\\%
-            Revised \cup@revd\\%
-            Accepted \cup@accptd\\%
-            First published online \cup@publd%
-            \par\vspace*{\cup@space@inter@extra}%
-          \fi
+          %\ifcup@dates
+            %Received \cup@recvd\\%
+            %Revised \cup@revd\\%
+            %Accepted \cup@accptd\\%
+            %First published online \cup@publd%
+            %\par\vspace*{\cup@space@inter@extra}%
+          %\fi
           \cup@abstract@extras\par
           \gdef\cup@abstract@extras{}
         }%

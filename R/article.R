@@ -582,9 +582,6 @@ isba_article <- function(..., keep_tex = TRUE, highlight = NULL, citation_packag
 cup_article <- function(..., keep_tex = TRUE,
                              md_extensions = c("-autolink_bare_uris"),
                              citation_package = "biblatex") {
-  if (citation_package == "natbib") {
-    stop("Cambridge University Press template does not support `natbib` for citation processing.")
-  }
   pdf_document_format(
     "cup",
     keep_tex = keep_tex, md_extensions = md_extensions,
