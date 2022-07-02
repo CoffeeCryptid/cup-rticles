@@ -2,20 +2,13 @@
 #'
 #' List available journal names in this package.
 #'
-#' These names can be useful in two ways:
-#'
-#' * You can add `_article` suffix to get the name of the output format (e.g.,
-#' [rjournal_article()]).
-#'
-#' * You can use the name directly in the `template` argument of
-#' [rmarkdown::draft()].
 #' @return A character vector of the journal names.
 #' @export
 #' @md
 #' @examples
-#' rticles::journals()
+#' CUPrticles::journals()
 journals <- function() {
-  sort(dir(pkg_file_template()))
+  sort(c("default", "aog", "bjps", "jjps", "pasa", "psrm", "jpup"))
 }
 
 find_resource <- function(template, file = "template.tex") {
@@ -48,9 +41,9 @@ merge_list <- function(x, y) {
 #' @param in_header Paths to files to include in the header.
 #' @return (Invisibly) The path of the generate file.
 #' @examples
-#' x <- rticles:::template_pandoc(
+#' x <- CUPrticles:::template_pandoc(
 #'   list(preamble = "%abc", filename = "wickham"),
-#'   rticles:::find_resource("rjournal", "RJwrapper.tex"),
+#'   CUPrticles:::find_resource("rjournal", "RJwrapper.tex"),
 #'   tempfile()
 #' )
 #' if (interactive()) file.show(x)
@@ -94,7 +87,7 @@ get_list_element <- function(x, names) {
   x[[names[n]]]
 }
 
-pkg_file <- function(...) system.file(..., package = "rticles")
+pkg_file <- function(...) system.file(..., package = "CUPrticles")
 
 pkg_file_template <- function(...) pkg_file("rmarkdown", "templates", ...)
 
@@ -136,7 +129,7 @@ render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
   on.exit(setwd(oldwd), add = TRUE)
   # create a draft of the format
   doc <- paste0(journal, "_article", ".Rmd")
-  rmarkdown::draft(doc, template = journal, package = "rticles", create_dir = FALSE, edit = FALSE)
+  rmarkdown::draft(doc, template = journal, package = "CUPrticles", create_dir = FALSE, edit = FALSE)
   # render the file in the temp dir
   message(
     "Rendering the ", journal, " format...",

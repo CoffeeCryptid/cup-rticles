@@ -15,8 +15,7 @@ keywords: Research ethics; measurement; transparency; fieldwork; political viole
 abstract: |
   Lorem ipsum dolor sit amet, amet pellentesque ridiculus at dolor conubia. Elit id neque et, pellentesque quis faucibus ut aenean. Neque libero et mauris ipsum ac, sed risus montes. Massa nullam donec et ac congue donec posuere fermentum in fames. At aliquam, dui sed orci, in id ut augue et a. Curabitur libero cursus sociosqu in velit, non donec conubia. Vitae risus, interdum et nascetur condimentum nec sit nullam. Urna turpis orci faucibus velit porta. Sed aliquam vel sem. Ridiculus maximus ac, vulputate, accumsan accumsan semper sed, nulla. Erat eu lacus ex auctor, in a faucibus. Varius nunc tristique duis. In eget fames odio cras sollicitudin in tristique tempus dictumst. Fames eu eu risus senectus dignissim felis lacinia.
 output: 
-  CUPrticles::cup_article:
-    journal: "psrm"
+  CUPrticles::pasa_article:
     keep_tex: true
 include-after:
   - \include{appendix}
@@ -25,18 +24,6 @@ include-after:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 ```
-
-# Journals
-
-Possible values for "journal" field in YAML Header > output:
-
-- default
-- aog: Annals of Glaciology
-- jog: Journal of Glaciology
-- bjps: British Journal of Political Science
-- jjps: currently doesn't work
-- psrm: Political Science and Research Methods
-- jpup: doesn't work (missing logo)
 
 # Manuscript
 
@@ -50,7 +37,7 @@ Possible values for "manuscript" field in YAML header:
 - suppinfo
 
 ```{r cars}
-summary(cars) |> knitr::kable()
+#summary(cars) |> knitr::kable()
 ```
 
 # Citing stuff
