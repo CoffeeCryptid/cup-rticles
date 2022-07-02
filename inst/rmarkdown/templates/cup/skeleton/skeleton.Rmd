@@ -1,0 +1,51 @@
+---
+title: "Template Title"
+author: 
+  - name: "Your Name"
+    affiliation: "Your Institution"
+    email: "your.email@email.org"
+  - name: "Someone Else"
+date: "The Date"
+journal: psrm
+manuscript: article
+year: 2021
+volume: 2
+doi: 10.1017/psrm.2021.48
+bibliography: example.bib
+keywords: Research ethics; measurement; transparency; fieldwork; political violence
+abstract: |
+  There has been a proliferation of research with human participants in violent contexts over the past ten years. Adhering to commonly held ethical principles such as beneficence, justice, and respect for persons is particularly important and challenging in research on violence. This letter argues that practices around research ethics in violent contexts should be reported more transparently in research outputs, and should be seen as a subset of research methods. We offer practical suggestions and empirical evidence from both within and outside of political science around risk assessments, mitigating the risk of distress and negative psychological outcomes, informed consent, and monitoring the incidence of potential harms. An analysis of published research on violence involving human participants from 2008 to 2019 shows that only a small proportion of current publications include any mention of these important dimensions of research ethics.
+output: 
+  rticles::cup_article:
+    keep_tex: true
+header-includes:
+  - \usepackage{booktabs,microtype,siunitx}
+  - \sisetup{detect-all,separate-uncertainty = true}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+# R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars) |> knitr::kable()
+```
+
+# Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure}
+plot(pressure)
+```
+
+
+# Citing stuff
+
+There has been a proliferation of research involving human participants on the topic of violence. Since 2008, the percent of articles in six top political science journals that study violence and involve human participants has doubled, from about 3\% to more than 6\%.\footnote{Journals in the review include the American Political Science Review, American Journal of Political Science, Journal of Politics, World Politics, Journal of Peace Research, and Journal of Conflict Resolution.} The boom of field research on violence has been fueled by a number of goals: the desire to test the ``microfoundations'' of theories about the causes and consequences of conflict [@kertzer2017microfoundations], the demand for research designs that identify causal claims [@gerber2004illusion], and concerns that the perspectives of people affected by conflict should be represented [@pearlman2017crossed]. Most importantly, the proliferation of research in violent contexts is driven by a desire to use high quality evidence to inform policies to mitigate and prevent violence. 

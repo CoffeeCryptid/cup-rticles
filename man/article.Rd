@@ -36,6 +36,7 @@
 \alias{trb_article}
 \alias{wellcomeor_article}
 \alias{isba_article}
+\alias{cup_article}
 \title{R Markdown output formats for (journal) articles}
 \usage{
 acm_article(...)
@@ -161,6 +162,13 @@ isba_article(
   keep_tex = TRUE,
   highlight = NULL,
   citation_package = "natbib"
+)
+
+cup_article(
+  ...,
+  keep_tex = TRUE,
+  md_extensions = c("-autolink_bare_uris"),
+  citation_package = "biblatex"
 )
 }
 \arguments{
@@ -457,6 +465,12 @@ Possible arguments for the YAML header are:
 \item \code{header-includes}: custom additions to the header, before the \verb{\\begin\{document\}} statement
 \item \code{include-after}: for including additional LaTeX code before the \verb{\\end\{document\}} statement
 }
+}
+
+\section{\code{cup_article}}{
+ Format for creating submissions to Cambridge University Press
+journals. Adapted from
+\url{https://www.overleaf.com/latex/templates/template-for-submission-to-political-science-research-and-methods/qytgqmgznvnh}.
 }
 
 \examples{

@@ -1,0 +1,4 @@
+name: Cambridge University Press Article
+description: >
+   R Markdown adaptation for the Overleaf Template for Political Science and Research Methods
+create_dir: TRUE

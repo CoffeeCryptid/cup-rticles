@@ -572,3 +572,22 @@ isba_article <- function(..., keep_tex = TRUE, highlight = NULL, citation_packag
     keep_tex = keep_tex, highlight = highlight, citation_package = citation_package, ...
   )
 }
+
+#' @section `cup_article`: Format for creating submissions to Cambridge University Press
+#'   journals. Adapted from
+#'   <https://www.overleaf.com/latex/templates/template-for-submission-to-political-science-research-and-methods/qytgqmgznvnh>.
+#'
+#' @export
+#' @rdname article
+cup_article <- function(..., keep_tex = TRUE,
+                             md_extensions = c("-autolink_bare_uris"),
+                             citation_package = "biblatex") {
+  if (citation_package == "natbib") {
+    stop("Cambridge University Press template does not support `natbib` for citation processing.")
+  }
+  pdf_document_format(
+    "cup",
+    keep_tex = keep_tex, md_extensions = md_extensions,
+    citation_package = citation_package, ...
+  )
+}
