@@ -36,7 +36,7 @@ Possible values for "journal" field in YAML Header > output:
 - bjps: British Journal of Political Science
 - jjps: currently doesn't work
 - psrm: Political Science and Research Methods
-- jpup: doesn't work (missing logo)
+- jpup: Journal of Public Policy
 
 # Manuscript
 

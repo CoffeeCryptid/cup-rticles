@@ -1,10 +1,7 @@
 # Run only on CI
-skip_on_cran()
+#skip_on_cran()
 
 temp_file <- list.files(pkg_file_template(), recursive = TRUE, pattern = "template.tex$", full.names = TRUE)
-
-# Rjournal template has another name
-temp_file[grep("rjournal", temp_file)] <- pkg_file_template("rjournal", "resources", "RJwrapper.tex")
 
 expect_contains <- function(file, pattern, nb = 1, ...) {
   content <- xfun::read_utf8(file)

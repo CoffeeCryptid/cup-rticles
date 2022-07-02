@@ -8,7 +8,7 @@
 #' @examples
 #' CUPrticles::journals()
 journals <- function() {
-  sort(c("default", "aog", "bjps", "jjps", "pasa", "psrm", "jpup"))
+  sort(dir(pkg_file_template()))
 }
 
 find_resource <- function(template, file = "template.tex") {

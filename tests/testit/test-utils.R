@@ -29,7 +29,7 @@ assert("last author is prepend with and ", {
 })
 
 assert("all journals are listed and have a template folder", {
-  all <- grep("_article$", getNamespaceExports("rticles"), value = TRUE)
+  all <- grep("_article$", getNamespaceExports("CUPrticles"), value = TRUE)
   all <- gsub("_article$", "", all)
   folder_name <- journals()
   # Special case for format function handling several version of template
