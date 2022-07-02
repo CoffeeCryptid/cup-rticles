@@ -1,14 +1,35 @@
-#' List available journals
+#' List available templates
 #'
-#' List available journal names in this package.
+#' List available template names in this package.
 #'
-#' @return A character vector of the journal names.
+#' @return A character vector of the template names.
 #' @export
 #' @md
 #' @examples
 #' CUPrticles::journals()
 journals <- function() {
   sort(dir(pkg_file_template()))
+}
+
+#' List available journals
+#'
+#' List available journal in the CUP template.
+#'
+#' @return A character vector of the journal names.
+#' @md
+#' @examples
+#' CUPrticles::cup_journals()
+#' @export
+cup_journals <- function() {
+  list(
+    c(template = "cup", journal = "aog", name = "Annals of Glaciology"),
+    c(template = "cup", journal = "bjps", name = "British Journal of Political Science"),
+    c(template = "cup", journal = "default", name = "Cambridge University Press Default"),
+    c(template = "cup", journal = "jog", name = "Journal of Glaciology"),
+    c(template = "cup", journal = "jpup", name = "Journal of Public Policy"),
+    c(template = "cup", journal = "psrm", name = "Political Science and Research Methods"),
+    c(template = "pasa", journal = "", name = "Publications of the Astronomical Society of Australia")
+  )
 }
 
 find_resource <- function(template, file = "template.tex") {
@@ -128,7 +149,7 @@ render_draft <- function(journal, output_options = NULL, quiet = FALSE) {
   oldwd <- setwd(dir)
   on.exit(setwd(oldwd), add = TRUE)
   # create a draft of the format
-  doc <- paste0(journal, "_article", ".Rmd")
+  doc <- paste0(journal, output_options, "_article", ".Rmd")
   rmarkdown::draft(doc, template = journal, package = "CUPrticles", create_dir = FALSE, edit = FALSE)
   # render the file in the temp dir
   message(

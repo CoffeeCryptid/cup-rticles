@@ -16,7 +16,6 @@ abstract: |
   Lorem ipsum dolor sit amet, amet pellentesque ridiculus at dolor conubia. Elit id neque et, pellentesque quis faucibus ut aenean. Neque libero et mauris ipsum ac, sed risus montes. Massa nullam donec et ac congue donec posuere fermentum in fames. At aliquam, dui sed orci, in id ut augue et a. Curabitur libero cursus sociosqu in velit, non donec conubia. Vitae risus, interdum et nascetur condimentum nec sit nullam. Urna turpis orci faucibus velit porta. Sed aliquam vel sem. Ridiculus maximus ac, vulputate, accumsan accumsan semper sed, nulla. Erat eu lacus ex auctor, in a faucibus. Varius nunc tristique duis. In eget fames odio cras sollicitudin in tristique tempus dictumst. Fames eu eu risus senectus dignissim felis lacinia.
 output: 
   CUPrticles::cup_article:
-    journal: "psrm"
     keep_tex: true
 include-after:
   - \include{appendix}

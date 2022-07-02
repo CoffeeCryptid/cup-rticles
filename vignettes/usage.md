@@ -1,6 +1,6 @@
 
 
-To use **rticles** from RStudio, you can access the templates through `File -> New File -> R Markdown`. This will open the dialog box where you can select from one of the available templates:
+To use **CUPrticles** from RStudio, you can access the templates through `File -> New File -> R Markdown`. This will open the dialog box where you can select from one of the available templates:
 
 ![New R Markdown](https://bookdown.org/yihui/rmarkdown/images/rticles-templates.png)
     
@@ -9,10 +9,10 @@ If you are not using RStudio, you'll also need to install [Pandoc](https://pando
 
 ```r
 rmarkdown::draft(
-    "MyJSSArticle.Rmd", template = "jss", package = "rticles"
+    "MyCUPArticle.Rmd", template = "cup", package = "CUPrticles"
 )
 rmarkdown::draft(
-    "MyRJournalArticle", template = "rjournal", package = "rticles"
+    "MyPASAArticle", template = "pasa", package = "CUPrticles"
 )
 ```
    

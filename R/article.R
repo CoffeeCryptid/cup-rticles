@@ -3,31 +3,28 @@
 #' @param
 #' ...,number_sections,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
 #' Arguments passed to [rmarkdown::pdf_document()].
-#' #' R Markdown output formats for (journal) articles
 #'
 #' @section Details: You can find more details about each output format below.
 #' @name cup_article
-#' @rdname cup_article
 NULL
 
 #' @section `cup_article`:  Cambridge University Press journals.
 #' Adapted from
 #' <https://www.overleaf.com/latex/templates/template-for-submission-to-political-science-research-and-methods/qytgqmgznvnh>.
 #'
-#' The argument `journal` accepts the acronym of any of these
+#' @param journal The argument `journal` accepts the acronym of any of these
 #' Cambridge University Press journals:
 #'
 #' * `default`: Default journal style
 #' * `aog`: Annals of Glaciology
 #' * `jog`: Journal of Glaciology
 #' * `bjps`: British Journal of Political Science
-#' * `jjps`: currently doesn't work
 #' * `psrm`: Political Science and Research Methods
-#' * `jpup`: doesn't work (missing logo)
+#' * `jpup`: Journal of Public Policy
 #'
 #' @rdname cup_article
 #' @export
-cup_article <- function(journal = c("default", "aog", "jog", "bjps", "jjps", "psrm", "jpup"),
+cup_article <- function(journal = c("default", "aog", "jog", "bjps", "psrm", "jpup"),
                         keep_tex = TRUE,
                         citation_package = "biblatex",
                         md_extensions = c(

@@ -5,7 +5,7 @@ resource_files:
 ---
 
 ```{r, setup, include = FALSE}
-library(rticles)
+library(CUPrticles)
 ```
 
 
@@ -16,38 +16,41 @@ library(rticles)
 # We generate the YAML file on the fly to render the gallery
 
 # helper
-gen_fun <- function(journal) {
+gen_fun <- function(template, journal) {
   # generic case
-  fun_name <- sprintf("%s_article", journal)
-  out_opts <- NULL
-  
-  # handles special case
-  if (grepl("oup_", journal)) {
-    fun_name <- sprintf("oup_article")
-    out_opts <- sprintf("oup_version = %s", gsub("oup_v(\\d)", "\\1", journal))
-  }
+  fun_name <- sprintf("%s_article", template)
+  out_opts <- if (journal != "") {list("journal" = journal)} else {NULL}
   
   list(fun_name = fun_name, out_opts = out_opts)
   
 }
 
+journals <- cup_journals()
+
 # list of sites
-articles <- lapply(journals(), function(journal) {
-  name <- yaml::read_yaml(rticles:::pkg_file_template(journal, "template.yaml"))$name
-  img <- file.path("resources", paste0(journal, "_article.gif"))
-  href <- file.path("resources", paste0(journal, "_article.pdf"))
-  repo_url <- "https://github.com/rstudio/rticles/tree/main/inst/rmarkdown/templates/"
+articles <- lapply(journals, function(x) {
+  template <- x[["template"]]
+  journal <- x[["journal"]]
+  name <- x[["name"]]
+  
+  #name <- yaml::read_yaml(CUPrticles:::pkg_file_template(template, "template.yaml"))$name
+  repo_url <- "https://github.com/CoffeeCryptid/CUPrticles/tree/main/inst/rmarkdown/templates/"
+  
+  img <- file.path("resources", paste0(template, journal, "_article.gif"))
+  href <- file.path("resources", paste0(template, journal, "_article.pdf"))
+  
   if (!file.exists(img) || !file.exists(href)) return(list())
-  fun <- gen_fun(journal)
+  fun <- gen_fun(template, journal)
   list(
-    title = sprintf("%s - %s", journal, name),
+    title = sprintf("%s %s - %s", template, journal, name),
     yaml_format_opts = if (is.null(fun$out_opts)) "default" else c("", strwrap(sub(" = ", ": ", fun$out_opts), indent = 4)),
     yaml_format_name = fun$fun_name,
     fun = sprintf("%s()", fun$fun),
     img = img, 
     href = href,
-    source = paste0(repo_url, journal)
+    source = paste0(repo_url, template)
   )
+
 })
 
 articles <- Filter(length, articles)

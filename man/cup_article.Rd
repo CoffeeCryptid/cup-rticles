@@ -6,7 +6,7 @@
 \title{R Markdown output formats for Cambridge University Press journals.}
 \usage{
 cup_article(
-  journal = c("default", "aog", "jog", "bjps", "jjps", "psrm", "jpup"),
+  journal = c("default", "aog", "jog", "bjps", "psrm", "jpup"),
   keep_tex = TRUE,
   citation_package = "biblatex",
   md_extensions = c("-autolink_bare_uris"),
@@ -22,8 +22,18 @@ pasa_article(
 )
 }
 \arguments{
-\item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.
-#' R Markdown output formats for (journal) articles}
+\item{journal}{The argument \code{journal} accepts the acronym of any of these
+Cambridge University Press journals:
+\itemize{
+\item \code{default}: Default journal style
+\item \code{aog}: Annals of Glaciology
+\item \code{jog}: Journal of Glaciology
+\item \code{bjps}: British Journal of Political Science
+\item \code{psrm}: Political Science and Research Methods
+\item \code{jpup}: Journal of Public Policy
+}}
+
+\item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
 }
 \description{
 R Markdown output formats for Cambridge University Press journals.
@@ -36,18 +46,6 @@ R Markdown output formats for Cambridge University Press journals.
   Cambridge University Press journals.
 Adapted from
 \url{https://www.overleaf.com/latex/templates/template-for-submission-to-political-science-research-and-methods/qytgqmgznvnh}.
-
-The argument \code{journal} accepts the acronym of any of these
-Cambridge University Press journals:
-\itemize{
-\item \code{default}: Default journal style
-\item \code{aog}: Annals of Glaciology
-\item \code{jog}: Journal of Glaciology
-\item \code{bjps}: British Journal of Political Science
-\item \code{jjps}: currently doesn't work
-\item \code{psrm}: Political Science and Research Methods
-\item \code{jpup}: doesn't work (missing logo)
-}
 }
 
 \section{\code{pasa_article}}{
