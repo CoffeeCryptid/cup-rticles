@@ -1575,6 +1575,10 @@
 %%   Paul Gessler.
 %% 
 %% This work consists of the file cup-journal.cls.
+%%
+%% Minor edits on July 3, 2022 by Sarah Thiesen:
+%% commented out lines 1270-1276, which caused errors 
+%% with some of the journal formats.
 %% 
 %%
 %% End of file `cup-journal.cls'.

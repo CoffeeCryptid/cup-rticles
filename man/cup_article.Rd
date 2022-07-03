@@ -7,6 +7,7 @@
 \usage{
 cup_article(
   journal = c("default", "aog", "jog", "bjps", "psrm", "jpup"),
+  manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
   keep_tex = TRUE,
   citation_package = "biblatex",
   md_extensions = c("-autolink_bare_uris"),
@@ -15,10 +16,12 @@ cup_article(
 )
 
 pasa_article(
-  ...,
+  manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
   keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris"),
-  citation_package = "natbib"
+  citation_package = "natbib",
+  pandoc_args = NULL,
+  ...
 )
 }
 \arguments{
@@ -31,6 +34,16 @@ Cambridge University Press journals:
 \item \code{bjps}: British Journal of Political Science
 \item \code{psrm}: Political Science and Research Methods
 \item \code{jpup}: Journal of Public Policy
+}}
+
+\item{manuscript}{The argument \code{manuscript} accepts these types of journal contributions:
+\itemize{
+\item article
+\item communication
+\item letter
+\item note
+\item review
+\item suppinfo
 }}
 
 \item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}

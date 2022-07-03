@@ -1,5 +1,13 @@
 #' R Markdown output formats for Cambridge University Press journals.
 #'
+#' @param manuscript The argument `manuscript` accepts these types of journal contributions:
+#' - article
+#' - communication
+#' - letter
+#' - note
+#' - review
+#' - suppinfo
+#'
 #' @param
 #' ...,number_sections,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
 #' Arguments passed to [rmarkdown::pdf_document()].
@@ -25,6 +33,7 @@ NULL
 #' @rdname cup_article
 #' @export
 cup_article <- function(journal = c("default", "aog", "jog", "bjps", "psrm", "jpup"),
+                        manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
                         keep_tex = TRUE,
                         citation_package = "biblatex",
                         md_extensions = c(
@@ -32,13 +41,15 @@ cup_article <- function(journal = c("default", "aog", "jog", "bjps", "psrm", "jp
                         ), pandoc_args = NULL, ...) {
 
   journal <- match.arg(journal)
+  manuscript <- match.arg(manuscript)
 
   if (citation_package == "natbib") {
     stop("CUP template does not support `natbib` for citation processing.")
   }
 
   args <- c(
-    "journal" = journal
+    "journal" = journal,
+    "manuscript" = manuscript
   )
 
   # Convert to pandoc arguments
@@ -59,17 +70,30 @@ cup_article <- function(journal = c("default", "aog", "jog", "bjps", "psrm", "jp
 #'   <https://www.overleaf.com/latex/templates/publications-of-the-astronomical-society-of-australia/nbjxzvhrrgbx>.
 #' @rdname cup_article
 #' @export
-pasa_article <- function(..., keep_tex = TRUE,
-                             md_extensions = c("-autolink_bare_uris"),
-                             citation_package = "natbib") {
+pasa_article <- function(
+    manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
+    keep_tex = TRUE,
+    md_extensions = c("-autolink_bare_uris"),
+    citation_package = "natbib",
+    pandoc_args = NULL, ...) {
 
   if (citation_package == "biblatex") {
     stop("PASA template does not support `biblatex` for citation processing.")
   }
 
+  args <- c(
+    "manuscript" = manuscript
+  )
+
+  # Convert to pandoc arguments
+  pandoc_arg_list <- vec_to_pandoc_variable_args(args)
+
   pdf_document_format(
     "pasa",
-    keep_tex = keep_tex, md_extensions = md_extensions,
-    citation_package = citation_package, ...
+    keep_tex = keep_tex,
+    citation_package = citation_package,
+    md_extensions = md_extensions,
+    pandoc_args = c(pandoc_arg_list, pandoc_args),
+    ...
   )
 }
