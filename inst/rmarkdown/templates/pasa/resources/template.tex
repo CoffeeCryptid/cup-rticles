@@ -4,9 +4,6 @@
 $if(colorlinks)$
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 $endif$
-$if(CJKmainfont)$
-\PassOptionsToPackage{space}{xeCJK}
-$endif$
 %
 \documentclass[
  journal=pasa,
@@ -24,72 +21,18 @@ $for(classoption)$
 $endfor$
 ]{cup-journal}
 
-%F\usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
-  %\usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-$if(mathspec)$
-  \ifXeTeX
-    \usepackage{mathspec}
-  \else
-    \usepackage{unicode-math}
-  \fi
-$else$
-  \usepackage{unicode-math}
-$endif$
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-$if(mathfont)$
-$if(mathspec)$
-  \ifXeTeX
-    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-  \else
-    \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-  \fi
-$else$
-  \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$endif$
-$endif$
-$if(CJKmainfont)$
-  \ifXeTeX
-    \usepackage{xeCJK}
-    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-  \fi
-$endif$
+
 $if(luatexjapresetoptions)$
   \ifLuaTeX
     \usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
   \fi
 $endif$
-$if(CJKmainfont)$
-  \ifLuaTeX
-    \usepackage[$for(luatexjafontspecoptions)$$luatexjafontspecoptions$$sep$,$endfor$]{luatexja-fontspec}
-    \setmainjfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-  \fi
-$endif$
 \fi
-$if(zero-width-non-joiner)$
-%% Support for zero-width non-joiner characters.
-\makeatletter
-\def\zerowidthnonjoiner{%
-  % Prevent ligatures and adjust kerning, but still support hyphenating.
-  \texorpdfstring{%
-    \textormath{\nobreak\discretionary{-}{}{\kern.03em}%
-      \ifvmode\else\nobreak\hskip\z@skip\fi}{}%
-  }{}%
-}
-\makeatother
-\ifPDFTeX
-  \DeclareUnicodeCharacter{200C}{\zerowidthnonjoiner}
-\else
-  \catcode`^^^^200c=\active
-  \protected\def ^^^^200c{\zerowidthnonjoiner}
-\fi
-%% End of ZWNJ support
-$endif$
 
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -113,8 +56,9 @@ $endif$
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
-$if(tables)$
+
 \usepackage{booktabs,array}
+$if(tables)$
 $if(multirow)$
 \usepackage{multirow}
 $endif$
@@ -125,7 +69,7 @@ $endif$
 \usepackage{etoolbox}
 \makeatletter
 %\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\patchcmd{\if@noskipsec\mbox{}\fi\par}{}{}
+%\patchcmd{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
 % Allow footnotes in longtable head/foot
 %\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
@@ -158,26 +102,7 @@ $endif$
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-$if(numbersections)$
-\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
-$else$
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-$endif$
 
-$if(block-headings)$
-% Make \paragraph and \subparagraph free-standing
-\ifx\paragraph\undefined\else
-  \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-  \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-$endif$
-$if(pagestyle)$
-\pagestyle{$pagestyle$}
-$endif$
 $if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
@@ -234,16 +159,12 @@ $if(dir)$
   \newenvironment{LTR}{\beginL}{\endL}
 \fi
 $endif$
+
 $if(natbib)$
-	\usepackage[$natbiboptions$]{natbib}
-	\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+\usepackage[$natbiboptions$]{natbib}
+%\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
-$if(biblatex)$
-	\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
-$for(bibliography)$
-\addbibresource{$bibliography$}
-$endfor$
-$endif$
+
 $if(nocite-ids)$
 \nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
 $endif$
@@ -296,16 +217,16 @@ $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
 $for(author)$
-	$if(author.name)$\author{$author.name$}$else$\author{$author$}$endif$
-	$if(author.affiliation)$\affiliation{$author.affiliation$}$endif$
-	$if(author.email)$\email{$author.email$}$endif$
+$if(author.name)$\author{$author.name$}$else$\author{$author$}$endif$
+$if(author.affiliation)$\affiliation{$author.affiliation$}$endif$
+$if(author.email)$\email{$author.email$}$endif$
 $endfor$
 \date{$date$}
 $if(doi)$
-	\doi{$doi$}
+\doi{$doi$}
 $endif$
 $if(keywords)$
-	\keywords{$keywords$}
+\keywords{$keywords$}
 $endif$
 
 \begin{document}
@@ -314,12 +235,12 @@ $if(has-frontmatter)$
 $endif$
 
 $if(title)$
-	\maketitle
-	$if(abstract)$
-		\begin{abstract}
-			$abstract$
-		\end{abstract}
-	$endif$
+\maketitle
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
 $endif$
 
 $for(include-before)$
@@ -367,12 +288,8 @@ $else$
 \renewcommand\refname{$biblio-title$}
 $endif$
 $endif$
-%\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
-$endif$
-
-$if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 $endif$
 
 $for(include-after)$
