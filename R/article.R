@@ -7,6 +7,7 @@
 #' - note
 #' - review
 #' - suppinfo
+#' - research-paper
 #'
 #' @param
 #' ...,number_sections,keep_tex,latex_engine,citation_package,highlight,fig_caption,md_extensions,template,pandoc_args
@@ -29,11 +30,12 @@ NULL
 #' * `bjps`: British Journal of Political Science
 #' * `psrm`: Political Science and Research Methods
 #' * `jpup`: Journal of Public Policy
+#' * `jjps`: Japanese Journal of Political Science
 #'
 #' @rdname cup_article
 #' @export
-cup_article <- function(journal = c("default", "aog", "jog", "bjps", "psrm", "jpup"),
-                        manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
+cup_article <- function(journal = c("default", "aog", "jog", "bjps", "psrm", "jpup", "jjps"),
+                        manuscript = c("article", "communication", "letter", "note", "review", "suppinfo",  "research-paper"),
                         keep_tex = TRUE,
                         citation_package = "biblatex",
                         md_extensions = c(
@@ -71,7 +73,7 @@ cup_article <- function(journal = c("default", "aog", "jog", "bjps", "psrm", "jp
 #' @rdname cup_article
 #' @export
 pasa_article <- function(
-    manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
+    manuscript = c("article", "communication", "letter", "note", "review", "suppinfo", "research-paper"),
     keep_tex = TRUE,
     md_extensions = c("-autolink_bare_uris"),
     citation_package = "natbib",

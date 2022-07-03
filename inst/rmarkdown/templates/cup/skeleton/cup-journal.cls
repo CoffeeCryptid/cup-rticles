@@ -1436,8 +1436,8 @@
     {\includegraphics[width=26mm]{cup-logo-new}}
     {{\fontsize{2em}{2em}{\fontfamily{LinuxBiolinumT-LF}\selectfont JJPS}}}{}{}
   \patchcmd{\@maketitle}
-  %  {(Received \cup@recvd; revised \cup@revd; accepted \cup@accptd; first published online \cup@publd)}
-   % {(First published online \cup@publd)}
+    {(Received \cup@recvd; revised \cup@revd; accepted \cup@accptd; first published online \cup@publd)}
+    {(First published online \cup@publd)}
     {}{}
   \patch@numeric@authors
   \let\endnote\footnote

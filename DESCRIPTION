@@ -1,9 +1,9 @@
 Type: Package
 Package: CUPrticles
 Title: Article Formats for R Markdown
-Version: 0.23.7
+Version: 0.1
 Authors@R: c(
-	person("CoffeeCryptid", "sathiesen@gmail.com", role ="aut"),
+	person("Coffee", "Cryptid", , "sathiesen@gmail.com", role ="aut"),
     person("JJ", "Allaire", , "jj@rstudio.com", role = "aut"),
     person("Yihui", "Xie", , "xie@yihui.name", role = "aut",
            comment = c(ORCID = "0000-0003-0645-5666")),

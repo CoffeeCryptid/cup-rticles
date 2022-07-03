@@ -23,7 +23,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item CoffeeCryptid sathiesen@gmail.com
+  \item Coffee Cryptid \email{sathiesen@gmail.com}
   \item JJ Allaire \email{jj@rstudio.com}
   \item Yihui Xie \email{xie@yihui.name} (\href{https://orcid.org/0000-0003-0645-5666}{ORCID})
   \item  R Foundation [copyright holder]

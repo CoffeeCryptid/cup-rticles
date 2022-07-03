@@ -6,8 +6,9 @@
 \title{R Markdown output formats for Cambridge University Press journals.}
 \usage{
 cup_article(
-  journal = c("default", "aog", "jog", "bjps", "psrm", "jpup"),
-  manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
+  journal = c("default", "aog", "jog", "bjps", "psrm", "jpup", "jjps"),
+  manuscript = c("article", "communication", "letter", "note", "review", "suppinfo",
+    "research-paper"),
   keep_tex = TRUE,
   citation_package = "biblatex",
   md_extensions = c("-autolink_bare_uris"),
@@ -16,7 +17,8 @@ cup_article(
 )
 
 pasa_article(
-  manuscript = c("article", "communication", "letter", "note", "review", "suppinfo"),
+  manuscript = c("article", "communication", "letter", "note", "review", "suppinfo",
+    "research-paper"),
   keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris"),
   citation_package = "natbib",
@@ -34,6 +36,7 @@ Cambridge University Press journals:
 \item \code{bjps}: British Journal of Political Science
 \item \code{psrm}: Political Science and Research Methods
 \item \code{jpup}: Journal of Public Policy
+\item \code{jjps}: Japanese Journal of Political Science
 }}
 
 \item{manuscript}{The argument \code{manuscript} accepts these types of journal contributions:
@@ -44,6 +47,7 @@ Cambridge University Press journals:
 \item note
 \item review
 \item suppinfo
+\item research-paper
 }}
 
 \item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
