@@ -50,28 +50,20 @@ rmarkdown::draft(
 This will create a folder containing a Rmd file using the corresponding
 output format and all the assets required by this format.
 
-## Templates
-
-This package currently contains two templates:
-
-## Cambridge University Press template
+## Journals
 
 This template can generate articles for the following journals:
 
+-   Default Cambridge University Press template (default)
 -   Annals of Glaciology (aog)
--   Journal of Glaciology (jog)
 -   British Journal of Political Science (bjps)
--   Political Science and Research Methods (psrm)
+-   Journal of Glaciology (jog)
 -   Journal of Public Policy (jpup)
+-   Publications of the Astronomical Society of Australia (pasa)
+-   Political Science and Research Methods (psrm)
 
 The abbreviation of the journal name has to be specified in the YAML
 header.
-
-## Publications of the Astronomical Society of Australia (PASA) template
-
-This is separate from the other template as it needs additional
-resources, a slightly different Pandoc template and a different citation
-package (natbib).
 
 ------------------------------------------------------------------------
 
