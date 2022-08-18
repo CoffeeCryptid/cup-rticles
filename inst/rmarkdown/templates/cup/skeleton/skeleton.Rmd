@@ -9,7 +9,6 @@ date: "The Date"
 year: 2022
 volume: 2
 doi: 12.3456/1234.567
-bibliography: example.bib
 keywords: Research ethics; measurement; transparency; fieldwork; political violence
 abstract: |
   Lorem ipsum dolor sit amet, amet pellentesque ridiculus at dolor conubia. Elit id neque et, pellentesque quis faucibus ut aenean. Neque libero et mauris ipsum ac, sed risus montes. Massa nullam donec et ac congue donec posuere fermentum in fames. At aliquam, dui sed orci, in id ut augue et a. Curabitur libero cursus sociosqu in velit, non donec conubia. Vitae risus, interdum et nascetur condimentum nec sit nullam. Urna turpis orci faucibus velit porta. Sed aliquam vel sem. Ridiculus maximus ac, vulputate, accumsan accumsan semper sed, nulla. Erat eu lacus ex auctor, in a faucibus. Varius nunc tristique duis. In eget fames odio cras sollicitudin in tristique tempus dictumst. Fames eu eu risus senectus dignissim felis lacinia.
@@ -18,8 +17,6 @@ output:
     journal: psrm
     manuscript: article
     keep_tex: true
-include-after:
-  - \include{appendix}
 ---
 
 ```{r setup, include=FALSE}
@@ -34,9 +31,20 @@ Possible values for "journal" field in YAML header > output:
 - aog: Annals of Glaciology
 - jog: Journal of Glaciology
 - bjps: British Journal of Political Science
-- jjps: currently doesn't work
 - psrm: Political Science and Research Methods
 - jpup: Journal of Public Policy
+- pasa: Publications of the Astronomical Society of Australia
+
+# A note on PASA articles
+
+The PASA template does not support longtables because of twocolumn mode. To insert tables in a PASA article, please add `tables: true` to the YAML header and use the following code:
+
+```
+knitr::kable(df, format = "latex", booktabs = TRUE)
+```
+
+PASA is the only journal that needs the files `aas-macros.sty` and `apj.bst`.
+If any other format is used, these files can be deleted from the project folder.
 
 # Manuscript
 
@@ -49,10 +57,13 @@ Possible values for "manuscript" field in YAML header > output:
 - review
 - suppinfo
 
-```{r cars}
-summary(cars) |> knitr::kable()
-```
+# YAML Header fields
 
-# Citing stuff
-
-There has been a proliferation of research involving human participants on the topic of violence. Since 2008, the percent of articles in six top political science journals that study violence and involve human participants has doubled, from about 3\% to more than 6\%.\footnote{Journals in the review include the American Political Science Review, American Journal of Political Science, Journal of Politics, World Politics, Journal of Peace Research, and Journal of Conflict Resolution.} The boom of field research on violence has been fueled by a number of goals: the desire to test the ``microfoundations'' of theories about the causes and consequences of conflict [@kertzer2017microfoundations], the demand for research designs that identify causal claims [@gerber2004illusion], and concerns that the perspectives of people affected by conflict should be represented [@pearlman2017crossed]. Most importantly, the proliferation of research in violent contexts is driven by a desire to use high quality evidence to inform policies to mitigate and prevent violence. 
+- author: List of authors, including names, institutional affiliations and email addresses
+- date: The date
+- year: Year of publication
+- volume: Volume number of journal
+- bibliography: Name of bibliography file
+- keywords
+- abstract
+- include-after: \LaTeX syntax to include after main text

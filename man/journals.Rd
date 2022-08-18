@@ -2,15 +2,15 @@
 % Please edit documentation in R/utils.R
 \name{journals}
 \alias{journals}
-\title{List available templates}
+\title{List available journals}
 \usage{
 journals()
 }
 \value{
-A character vector of the template names.
+A character vector of the journal names.
 }
 \description{
-List available template names in this package.
+List available journals
 }
 \examples{
 CUPrticles::journals()

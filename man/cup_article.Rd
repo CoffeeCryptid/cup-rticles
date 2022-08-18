@@ -2,26 +2,16 @@
 % Please edit documentation in R/article.R
 \name{cup_article}
 \alias{cup_article}
-\alias{pasa_article}
-\title{R Markdown output formats for Cambridge University Press journals.}
+\title{R Markdown output formats for Cambridge University Press journals.
+Adapted from
+\url{https://www.overleaf.com/latex/templates/template-for-submission-to-political-science-research-and-methods/qytgqmgznvnh}.}
 \usage{
 cup_article(
-  journal = c("default", "aog", "jog", "bjps", "psrm", "jpup", "jjps"),
-  manuscript = c("article", "communication", "letter", "note", "review", "suppinfo",
-    "research-paper"),
-  keep_tex = TRUE,
-  citation_package = "biblatex",
-  md_extensions = c("-autolink_bare_uris"),
-  pandoc_args = NULL,
-  ...
-)
-
-pasa_article(
+  journal = c("default", "aog", "jog", "bjps", "psrm", "jpup", "jjps", "pasa"),
   manuscript = c("article", "communication", "letter", "note", "review", "suppinfo",
     "research-paper"),
   keep_tex = TRUE,
   md_extensions = c("-autolink_bare_uris"),
-  citation_package = "natbib",
   pandoc_args = NULL,
   ...
 )
@@ -37,6 +27,7 @@ Cambridge University Press journals:
 \item \code{psrm}: Political Science and Research Methods
 \item \code{jpup}: Journal of Public Policy
 \item \code{jjps}: Japanese Journal of Political Science
+\item \code{pasa}: Publications of the Astronomical Society of Australia.
 }}
 
 \item{manuscript}{The argument \code{manuscript} accepts these types of journal contributions:
@@ -50,24 +41,10 @@ Cambridge University Press journals:
 \item research-paper
 }}
 
-\item{..., number_sections, keep_tex, latex_engine, citation_package, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
+\item{..., number_sections, keep_tex, latex_engine, highlight, fig_caption, md_extensions, template, pandoc_args}{Arguments passed to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}.}
 }
 \description{
 R Markdown output formats for Cambridge University Press journals.
-}
-\section{Details}{
- You can find more details about each output format below.
-}
-
-\section{\code{cup_article}}{
-  Cambridge University Press journals.
 Adapted from
 \url{https://www.overleaf.com/latex/templates/template-for-submission-to-political-science-research-and-methods/qytgqmgznvnh}.
 }
-
-\section{\code{pasa_article}}{
- Publications of the Astronomical Society of Australia.
-Adapted from
-\url{https://www.overleaf.com/latex/templates/publications-of-the-astronomical-society-of-australia/nbjxzvhrrgbx}.
-}
-

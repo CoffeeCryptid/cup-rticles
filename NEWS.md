@@ -1,4 +1,10 @@
-# CUPrticles (development version)
+# CUPrticles v0.2
+
+- Merged CUP article and PASA article template
+- Loaded inputenc before documentclass to avoid warning "Package biblatex Warning: Load 'inputenc' before biblatex.
+- Improved tests
+
+# CUPrticles v0.1
 
 It's new :)
 

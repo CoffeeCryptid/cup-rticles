@@ -5,6 +5,12 @@ test_format <- function(name, output_options = NULL, skip = NULL) {
   # skip if requested
   if (!is.null(skip) && isTRUE(skip)) return()
 
+  journal <- if (hasName(output_options, "journal")) {
+    output_options[["journal"]]
+  } else {
+    "CUP"
+  }
+
   # work in a temp directory
   dir <- tempfile()
   dir.create(dir)
@@ -19,18 +25,20 @@ test_format <- function(name, output_options = NULL, skip = NULL) {
   )
 
   message(
-    "Rendering the ", name, " format...",
-    if (!is.null(output_options)) " (with output options)"
+    "Rendering the ", journal, " format..."
   )
+
   output_file <- rmarkdown::render(testdoc, output_options = output_options, quiet = TRUE)
-  assert(paste(name, "format works"), {
-    file.exists(output_file)
-  })
+
+  return(file.exists(output_file))
 }
 
-#--- NOTE to contributors ------------------------------------------------------
-# Please order these tests by formats alphabetically.
-#-------------------------------------------------------------------------------
+#####
 
-test_format("cup")
-test_format("pasa")
+for (journal in CUPrticles::journals()) {
+  options <- list(journal = journal, manuscript = "note", keep_tex = FALSE)
+  result <- test_format("cup", output_options = options)
+  test_that(paste(journal, "renders..."), {
+    expect_true(result)
+  })
+}

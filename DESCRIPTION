@@ -1,7 +1,7 @@
 Type: Package
 Package: CUPrticles
 Title: Article Formats for R Markdown
-Version: 0.1
+Version: 0.2
 Authors@R: c(
 	person("Coffee", "Cryptid", , "sathiesen@gmail.com", role ="aut"),
     person("JJ", "Allaire", , "jj@rstudio.com", role = "aut"),
@@ -90,7 +90,6 @@ BugReports: https://github.com/CoffeeCryptid/cup-rticles/issues
 Imports: 
     knitr (>= 1.30),
     rmarkdown (>= 2.13.7),
-    tinytex (>= 0.30),
     utils,
     xfun,
     yaml

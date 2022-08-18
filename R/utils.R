@@ -1,34 +1,19 @@
-#' List available templates
-#'
-#' List available template names in this package.
-#'
-#' @return A character vector of the template names.
-#' @export
-#' @md
-#' @examples
-#' CUPrticles::journals()
-journals <- function() {
-  sort(dir(pkg_file_template()))
-}
-
 #' List available journals
-#'
-#' List available journal in the CUP template.
 #'
 #' @return A character vector of the journal names.
 #' @md
 #' @examples
-#' CUPrticles::cup_journals()
+#' CUPrticles::journals()
 #' @export
-cup_journals <- function() {
-  list(
-    c(template = "cup", journal = "aog", name = "Annals of Glaciology"),
-    c(template = "cup", journal = "bjps", name = "British Journal of Political Science"),
-    c(template = "cup", journal = "default", name = "Cambridge University Press Default"),
-    c(template = "cup", journal = "jog", name = "Journal of Glaciology"),
-    c(template = "cup", journal = "jpup", name = "Journal of Public Policy"),
-    c(template = "cup", journal = "psrm", name = "Political Science and Research Methods"),
-    c(template = "pasa", journal = "", name = "Publications of the Astronomical Society of Australia")
+journals <- function() {
+  c(
+    "Cambridge University Press Default" = "default",
+    "Annals of Glaciology" = "aog",
+    "British Journal of Political Science" = "bjps",
+    "Journal of Glaciology" = "jog",
+    "Journal of Public Policy" = "jpup",
+    "Publications of the Astronomical Society of Australia" = "pasa",
+    "Political Science and Research Methods" = "psrm"
   )
 }
 

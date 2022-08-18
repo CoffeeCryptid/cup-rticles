@@ -5,6 +5,19 @@ $if(colorlinks)$
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 $endif$
 %
+\RequirePackage{iftex}
+\ifPDFTeX
+  \RequirePackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+\else % if luatex or xetex
+
+$if(luatexjapresetoptions)$
+  \ifLuaTeX
+    \RequirePackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
+  \fi
+$endif$
+\fi
+%
 \documentclass[
 $if(journal)$
   journal=$journal$,
@@ -23,19 +36,6 @@ $for(classoption)$
 $endfor$
 ]{cup-journal}
 
-\usepackage{iftex}
-\ifPDFTeX
-  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xetex
-
-$if(luatexjapresetoptions)$
-  \ifLuaTeX
-    \usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
-  \fi
-$endif$
-\fi
-
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -45,7 +45,7 @@ $endif$
 $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
-\usepackage{xcolor}
+
 $if(listings)$
 \usepackage{listings}
 \newcommand{\passthrough}[1]{#1}
@@ -58,14 +58,18 @@ $endif$
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
+
 $if(tables)$
-\usepackage{longtable,booktabs,array}
+\usepackage{booktabs,array}
+
 $if(multirow)$
 \usepackage{multirow}
 $endif$
 
+$if(pasa)$
+$else$
+\usepackage{longtable}
 \usepackage{calc} % for calculating minipage widths
-
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -74,8 +78,10 @@ $endif$
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
+$endif$
 
 $endif$
+
 $if(graphics)$
 \usepackage{graphicx}
 \makeatletter
@@ -90,10 +96,6 @@ $if(graphics)$
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-$endif$
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 $if(strikeout)$
 $-- also used for underline
@@ -161,7 +163,6 @@ $if(dir)$
 $endif$
 
 $if(biblatex)$
-\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
@@ -281,6 +282,19 @@ $if(has-frontmatter)$
 \backmatter
 $endif$
 
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(has-chapters)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+  \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 $endif$
@@ -290,4 +304,3 @@ $include-after$
 
 $endfor$
 \end{document}
-
