@@ -37,7 +37,7 @@ Possible values for "manuscript" field in YAML header > output:
 - suppinfo
 
 ```{r cars}
-#summary(cars) |> knitr::kable()
+summary(cars) |> knitr::kable()
 ```
 
 # Citing stuff
